@@ -1,0 +1,423 @@
+
+
+===== package.json =====
+
+{
+  "name": "colorectal-ai-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "tsc --noEmit && vite build", "preview": "vite preview" },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "axios": "latest",
+    "framer-motion": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "recharts": "latest",
+    "tailwindcss": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": { "typescript": "latest", "@types/react": "latest", "@types/react-dom": "latest" }
+}
+
+
+===== index.html =====
+
+<!doctype html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>ColoVision AI</title></head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\App.tsx =====
+
+import { Route, Routes } from "react-router-dom";
+import { SiteLayout } from "./components/SiteLayout";
+import { Home } from "./pages/Home";
+import { InfoPage } from "./pages/InfoPage";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import { Dashboard } from "./pages/Dashboard";
+import { AddPatient } from "./pages/AddPatient";
+
+export default function App() {
+  return <Routes>
+    <Route element={<SiteLayout />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<InfoPage title="About the research" type="about" />} />
+      <Route path="/facilities" element={<InfoPage title="Platform facilities" type="facilities" />} />
+      <Route path="/contact" element={<InfoPage title="Contact the research team" type="contact" />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/patients/new" element={<AddPatient />} />
+    </Route>
+  </Routes>;
+}
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\main.tsx =====
+
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./styles.css";
+createRoot(document.getElementById("root")!).render(<StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>);
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\styles.css =====
+
+@import "tailwindcss";
+*{box-sizing:border-box}body{margin:0;background:#f4f8fb;color:#102a43;font-family:Inter,ui-sans-serif,system-ui,sans-serif}.site-shell{min-height:100vh}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;max-width:1180px;padding:0 24px;margin:auto}.brand{display:flex;gap:9px;align-items:center;font-size:20px;color:#123a5b;text-decoration:none}.brand svg{color:#0f9f9a}.brand b{color:#0f9f9a}.nav-links{display:flex;align-items:center;gap:26px}.nav-links a{color:#486581;text-decoration:none;font-weight:600}.nav-links a.active{color:#0d7d80}.button{display:inline-flex;gap:8px;align-items:center;justify-content:center;background:#087f8c;color:#fff!important;border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}.button:hover{background:#056976}.button.small{padding:9px 15px}.secondary{background:#e7f3f5;color:#087f8c!important}.menu-button{display:none;background:none;border:0;color:#102a43}.hero{min-height:525px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:64px;max-width:1180px;margin:auto;padding:64px 24px}.hero h1,h1{font-size:clamp(2.3rem,5vw,4.5rem);line-height:1.08;letter-spacing:-.045em;margin:10px 0 22px}.hero h1{max-width:780px}.lead{font-size:1.15rem;line-height:1.7;color:#486581;max-width:670px}.eyebrow{font-size:.75rem;letter-spacing:.14em;color:#087f8c;font-weight:800}.actions{display:flex;gap:12px;margin-top:28px}.hero-visual{height:310px;border-radius:28px;background:radial-gradient(circle at 30% 20%,#b9f1ed,#d9e9ff 45%,#0b5071);color:#0c4868;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;box-shadow:0 24px 60px #1a5c7529}.hero-visual svg{color:#0a7e89}.hero-visual span{font-weight:800;font-size:1.3rem}.hero-visual small{color:#22516b}.section{max-width:1180px;margin:0 auto;padding:78px 24px}.section h2{font-size:2rem;margin-top:8px}.narrow{max-width:840px}.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px}.feature-card,.panel{background:#fff;border:1px solid #e1edf2;border-radius:17px;padding:24px;box-shadow:0 8px 28px #183b5610}.feature-card h3{margin:17px 0 7px}.feature-card p,.article p{line-height:1.65;color:#627d98}.icon-box{display:grid;place-items:center;color:#087f8c;background:#e5f7f5;border-radius:11px;width:46px;height:46px}.workflow{background:#eaf8f7;max-width:none;padding-left:max(24px,calc((100% - 1132px)/2));padding-right:max(24px,calc((100% - 1132px)/2))}.workflow>div{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.workflow span{display:flex;align-items:center;gap:10px;padding:10px 12px;background:white;border-radius:9px;font-weight:650}.workflow b{color:#0f9f9a}.disclaimer{max-width:1132px;margin:42px auto 80px;background:#fff7df;border-left:4px solid #eab308;padding:17px 20px;border-radius:8px;color:#76550a}footer{text-align:center;border-top:1px solid #dae7ee;padding:28px;color:#627d98;font-size:.9rem}.auth{display:grid;place-items:center;padding:60px 20px}.form{display:grid;gap:14px}.auth .panel{width:min(100%,480px)}.form label{display:grid;gap:6px;font-weight:650;font-size:.9rem}.form input,.form textarea,.form select{width:100%;border:1px solid #cad9e2;border-radius:9px;padding:11px;font:inherit;color:#102a43;background:white}.form input:focus,.form textarea:focus{outline:3px solid #bceeed}.error{background:#fff0f0;color:#a11;padding:10px;border-radius:8px}.notice{background:#e8f8f3;color:#066347;padding:10px;border-radius:8px}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.contact-grid p{display:flex;align-items:center;gap:10px;color:#486581}.article{margin-top:35px}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin:28px 0}.stat-grid>div{background:#fff;border-radius:14px;padding:22px;display:grid;gap:8px;border:1px solid #e1edf2}.stat-grid svg{color:#087f8c}.stat-grid b{font-size:2rem}.stat-grid span{color:#627d98}.two-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}.dropzone{border:2px dashed #8ac8c6;padding:25px;place-items:center;text-align:center;color:#087f8c;background:#f3fcfc}.dropzone input{border:0;padding:0}.dropzone svg{width:30px;height:30px}@media(max-width:800px){.menu-button{display:block}.nav-links{display:none}.nav-links.open{position:absolute;z-index:2;top:70px;left:16px;right:16px;display:flex;flex-direction:column;align-items:stretch;background:#fff;border-radius:14px;padding:20px;box-shadow:0 15px 36px #102a4322}.hero,.contact-grid{grid-template-columns:1fr}.hero{padding-top:36px;gap:30px}.hero-visual{height:220px}.card-grid{grid-template-columns:repeat(2,1fr)}.stat-grid{grid-template-columns:1fr}.two-columns{grid-template-columns:1fr}}@media(max-width:460px){.card-grid{grid-template-columns:1fr}.actions{flex-direction:column}.nav{padding:0 16px}}
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\components\FeatureCard.tsx =====
+
+import type { LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
+export function FeatureCard({ icon: Icon, title, text }: { icon: LucideIcon; title: string; text: string }) {
+  return <motion.article className="feature-card" whileHover={{ y: -6 }} transition={{ duration: .2 }}><span className="icon-box"><Icon size={24} /></span><h3>{title}</h3><p>{text}</p></motion.article>;
+}
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\components\SiteLayout.tsx =====
+
+import { BrainCircuit, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Link, NavLink, Outlet } from "react-router-dom";
+
+const links = [["Home", "/"], ["About Us", "/about"], ["Facilities", "/facilities"], ["Contact", "/contact"]];
+export function SiteLayout() {
+  const [open, setOpen] = useState(false);
+  return <div className="site-shell">
+    <header className="nav"><Link className="brand" to="/"><BrainCircuit /> <span>ColoVision <b>AI</b></span></Link>
+      <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle navigation">{open ? <X /> : <Menu />}</button>
+      <nav className={open ? "nav-links open" : "nav-links"}>{links.map(([name, path]) => <NavLink key={path} to={path} onClick={() => setOpen(false)}>{name}</NavLink>)}<Link className="login-link" to="/login">Login</Link><Link className="button small" to="/register">Register</Link></nav>
+    </header><main><Outlet /></main><footer>© 2026 ColoVision AI · Research and decision-support platform. Not a medical diagnosis.</footer>
+  </div>;
+}
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\pages\AddPatient.tsx =====
+
+```tsx
+import { FormEvent, useState } from "react";
+import { UploadCloud } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../services/api";
+
+type PredictionResult = {
+  id: number;
+  predicted_class: string;
+  confidence: number;
+  probabilities: number[];
+  mask_path: string;
+  overlay_path: string;
+};
+
+export function AddPatient() {
+  const [file, setFile] = useState<File | null>(null);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setMessage("");
+    setError("");
+
+    if (!file) {
+      setError("Please select a testing image.");
+      return;
+    }
+
+    const form = new FormData(e.currentTarget);
+
+    try {
+      setLoading(true);
+
+      const patientResponse = await api.post("/patients", {
+        patient_id: form.get("patient_id"),
+        name: form.get("name"),
+        address: form.get("address"),
+        age: Number(form.get("age")),
+        gender: form.get("gender"),
+        contact: form.get("contact"),
+      });
+
+      const patient = patientResponse.data;
+
+      const predictionData = new FormData();
+      predictionData.append("patient_id", String(patient.id));
+      predictionData.append("image", file);
+
+      const predictionResponse = await api.post<PredictionResult>(
+        "/prediction",
+        predictionData
+      );
+
+      const prediction = predictionResponse.data;
+
+      const confidence = (prediction.confidence * 100).toFixed(2);
+
+      setMessage(
+        "Analysis completed: " +
+          prediction.predicted_class +
+          " (" +
+          confidence +
+          "%)"
+      );
+
+      setTimeout(() => {
+        navigate("/patients/" + patient.id + "/results", {
+          state: {
+            patient: patient,
+            prediction: prediction,
+          },
+        });
+      }, 800);
+    } catch (err: any) {
+      setError(
+        err?.response?.data?.detail ||
+          "Unable to save patient or complete AI analysis."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <section className="section narrow">
+      <p className="eyebrow">PATIENT INTAKE</p>
+
+      <h1>Add patient and test image</h1>
+
+      {message && <p className="notice">{message}</p>}
+
+      {error && <p className="error">{error}</p>}
+
+      <form className="form panel" onSubmit={submit}>
+        <div className="two-columns">
+          <label>
+            Patient ID
+            <input name="patient_id" required />
+          </label>
+
+          <label>
+            Patient name
+            <input name="name" required />
+          </label>
+
+          <label>
+            Age
+            <input name="age" type="number" min="0" required />
+          </label>
+
+          <label>
+            Gender
+            <select name="gender" required>
+              <option value="">Select</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Address
+          <textarea name="address" required rows={3} />
+        </label>
+
+        <label>
+          Contact number
+          <input name="contact" required />
+        </label>
+
+        <label className="dropzone">
+          <UploadCloud />
+
+          <span>
+            {file
+              ? file.name
+              : "Choose a JPG, JPEG, or PNG testing image"}
+          </span>
+
+          <input
+            type="file"
+            accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+            onChange={(e) => {
+              setFile(e.target.files?.[0] ?? null);
+            }}
+            required
+          />
+        </label>
+
+        <button
+          className="button"
+          type="submit"
+          disabled={loading}
+        >
+          {loading
+            ? "Saving patient and running AI..."
+            : "Save patient and run AI analysis"}
+        </button>
+      </form>
+    </section>
+  );
+}
+```
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\pages\Dashboard.tsx =====
+
+```tsx
+import { Activity, Plus, ScanLine, UsersRound } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../services/api";
+
+type Patient = {
+  id: number;
+  patient_id: string;
+  name: string;
+  age: number;
+  gender: string;
+  created_at: string;
+};
+
+export function Dashboard() {
+  const [patients, setPatients] = useState<Patient[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadPatients() {
+      try {
+        const response = await api.get("/patients");
+        setPatients(response.data);
+      } catch {
+        setError("Unable to load patients.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadPatients();
+  }, []);
+
+  return (
+    <section className="section">
+      <p className="eyebrow">USER DASHBOARD</p>
+
+      <h1>Welcome, Researcher</h1>
+
+      {error && <p className="error">{error}</p>}
+
+      <div className="stat-grid">
+        <div>
+          <UsersRound />
+          <b>{loading ? "..." : patients.length}</b>
+          <span>Total patients</span>
+        </div>
+
+        <div>
+          <Activity />
+          <b>—</b>
+          <span>Total predictions</span>
+        </div>
+
+        <div>
+          <ScanLine />
+          <b>—</b>
+          <span>Recent analysis</span>
+        </div>
+      </div>
+
+      <Link className="button" to="/patients/new">
+        <Plus size={18} />
+        Add patient
+      </Link>
+
+      <div className="panel" style={{ marginTop: "2rem" }}>
+        <h2>Recent Patients</h2>
+
+        {loading ? (
+          <p>Loading patients...</p>
+        ) : patients.length === 0 ? (
+          <p>No patients added yet.</p>
+        ) : (
+          <div>
+            {patients.map((patient) => (
+              <div key={patient.id}>
+                <strong>{patient.name}</strong>
+                <p>
+                  Patient ID: {patient.patient_id} | Age: {patient.age} |{" "}
+                  {patient.gender}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+```
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\pages\Home.tsx =====
+
+import { ArrowRight, FileText, LockKeyhole, ScanLine, UsersRound } from "lucide-react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FeatureCard } from "../components/FeatureCard";
+const workflow = ["Medical Image", "Preprocessing", "Segmentation", "Tissue Region Detection", "Classification", "AI Result", "Medical Report"];
+export function Home() { return <>
+  <section className="hero"><div><p className="eyebrow">DEEP LEARNING · RESEARCH PLATFORM</p><motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>AI-powered colorectal cancer tissue segmentation and classification.</motion.h1><p className="lead">Deep-learning-based image segmentation and tissue classification for colorectal image analysis.</p><div className="actions"><Link className="button" to="/register">Get Started <ArrowRight size={18}/></Link><Link className="button secondary" to="/login">Login</Link></div></div><div className="hero-visual"><ScanLine size={74}/><span>AI analysis workspace</span><small>Secure · Traceable · Research-ready</small></div></section>
+  <section className="section"><p className="eyebrow">CAPABILITIES</p><h2>Made for structured clinical-image research</h2><div className="card-grid"><FeatureCard icon={ScanLine} title="AI Image Segmentation" text="Generate tissue masks and visual overlays from supported image uploads."/><FeatureCard icon={UsersRound} title="Patient Management" text="Organise patient details, source images, analysis history and outcomes."/><FeatureCard icon={FileText} title="Automated Reports" text="Prepare professional, reproducible PDF analysis reports."/><FeatureCard icon={LockKeyhole} title="Secure Authentication" text="Role-aware access with administrator approval and protected records."/></div></section>
+  <section className="section workflow"><p className="eyebrow">WORKFLOW</p><h2>From image to report</h2><div>{workflow.map((item, i) => <span key={item}>{item}{i < workflow.length - 1 && <b>↓</b>}</span>)}</div></section>
+  <aside className="disclaimer"><b>Research disclaimer:</b> This system is intended for research and decision-support purposes and is not a substitute for professional medical diagnosis.</aside>
+</>; }
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\pages\InfoPage.tsx =====
+
+import { Activity, FileText, Mail, MapPin, Phone, ScanLine, ShieldCheck, UsersRound } from "lucide-react";
+import { FeatureCard } from "../components/FeatureCard";
+const facilities = [[ScanLine, "AI Image Segmentation", "Transforms tissue images into visual region masks."], [Activity, "Tissue Classification", "Reports model-derived probability scores for six tissue classes."], [UsersRound, "Patient Management", "Maintains patient profiles and analysis history."], [FileText, "Automated PDF Reports", "Produces consistent research reports from saved results."], [ShieldCheck, "Secure Authentication", "Separates approved users from administrator functions."]];
+export function InfoPage({ title, type }: { title: string; type: "about" | "facilities" | "contact" }) {
+  if (type === "contact") return <section className="section narrow"><p className="eyebrow">CONTACT</p><h1>{title}</h1><div className="contact-grid"><div><p><MapPin/> Department of Computer Science, Your Institute</p><p><Phone/> +91 00000 00000</p><p><Mail/> research@example.edu</p></div><form className="form"><input placeholder="Your name"/><input type="email" placeholder="Email address"/><textarea placeholder="Your message" rows={5}/><button className="button">Send message</button></form></div></section>;
+  if (type === "facilities") return <section className="section"><p className="eyebrow">FACILITIES</p><h1>{title}</h1><div className="card-grid">{facilities.map(([icon, heading, text]) => <FeatureCard key={String(heading)} icon={icon as typeof ScanLine} title={heading as string} text={text as string}/>)}</div></section>;
+  return <section className="section narrow"><p className="eyebrow">ABOUT US</p><h1>{title}</h1><p className="lead">Colorectal cancer benefits from early detection and careful tissue assessment. This project explores how deep learning can support image segmentation, tissue-region analysis, and multi-class tissue classification.</p><div className="article"><h2>Project objective</h2><p>Provide a secure research interface that connects trained PyTorch models to a traceable patient and report workflow. It is designed to support—not replace—qualified clinical interpretation.</p><h2>How it works</h2><p>Images undergo the same preprocessing used in training, pass through the segmentation model, then the selected tissue region is classified. Results, probability values, images, and reports are stored securely.</p></div></section>;
+}
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\pages\Login.tsx =====
+
+import { FormEvent, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { api } from "../services/api";
+export function Login() { const [error, setError] = useState(""); const navigate = useNavigate(); async function submit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); setError(""); const data = new FormData(e.currentTarget); try { const response = await api.post("/auth/login", { identifier: data.get("identifier"), password: data.get("password") }); localStorage.setItem("access_token", response.data.access_token); navigate("/dashboard"); } catch { setError("Unable to sign in. Check your credentials or account approval status."); } } return <section className="auth"><form className="form panel" onSubmit={submit}><p className="eyebrow">SECURE ACCESS</p><h1>Welcome back</h1>{error && <p className="error">{error}</p>}<label>Email or username<input name="identifier" required autoComplete="username" /></label><label>Password<input name="password" type="password" required autoComplete="current-password" /></label><button className="button">Login</button><p>Need an account? <Link to="/register">Register</Link></p></form></section>; }
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\pages\Register.tsx =====
+
+import { FormEvent, useState } from "react";
+import { api } from "../services/api";
+export function Register() { const [notice, setNotice] = useState(""); async function submit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); const f = new FormData(e.currentTarget); if (f.get("password") !== f.get("confirm")) return setNotice("Passwords do not match."); try { await api.post("/auth/register", Object.fromEntries(f)); setNotice("Your registration request has been submitted and is waiting for administrator approval."); e.currentTarget.reset(); } catch { setNotice("Registration could not be completed. Please review your details."); } } return <section className="auth"><form className="form panel" onSubmit={submit}><p className="eyebrow">CREATE ACCOUNT</p><h1>Researcher registration</h1>{notice && <p className="notice">{notice}</p>}<label>Full name<input name="name" required/></label><label>Email<input name="email" type="email" required/></label><label>Phone<input name="phone" required/></label><label>Username<input name="username" required/></label><label>Password<input name="password" type="password" minLength={8} required/></label><label>Confirm password<input name="confirm" type="password" minLength={8} required/></label><button className="button">Submit registration</button></form></section>; }
+
+
+===== D:\Mega Project\colorectal-ai-frontend\src\services\api.ts =====
+
+import axios from "axios";
+export const api = axios.create({ baseURL: import.meta.env.VITE_API_URL ?? "http://localhost:8000/api" });
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("access_token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
